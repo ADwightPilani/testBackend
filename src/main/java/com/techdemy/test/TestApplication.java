@@ -23,14 +23,7 @@ public class TestApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Company c1 = new Company();
-		c1.setBoardOfDirectors("Elon, Friends");
-		c1.setCeo("Elon");
-		c1.setCompanyBrief("Electric Automobile");
-		c1.setName("Tesla");
-		c1.setSectorname("automobile");
-		c1.setTurnover(64000000000D);
-		cmprep.save(c1);
+		
 		
 		Sector s1 = new Sector();
 		s1.setSectorName("insurance");
@@ -55,6 +48,16 @@ public class TestApplication implements CommandLineRunner{
 		Sector s6 = new Sector();
 		s6.setSectorName("petrochemical");
 		secrep.save(s6);
+		
+		Company c1 = new Company();
+		c1.setBoardOfDirectors("Elon, Friends");
+		c1.setCeo("Elon");
+		c1.setCompanyBrief("Electric Automobile");
+		c1.setName("Tesla");
+		c1.setSectorname("automobile");
+		c1.setSector(s3);
+		c1.setTurnover(64000000000D);
+		cmprep.save(c1);
 	}
 
 }

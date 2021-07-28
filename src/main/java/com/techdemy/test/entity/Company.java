@@ -2,12 +2,17 @@ package com.techdemy.test.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Company")
@@ -19,7 +24,6 @@ public class Company {
 	@Column(nullable = false)
 	private String name;
 
-
 	@Column(nullable = false)
 	private Double turnover;
 
@@ -29,15 +33,28 @@ public class Company {
 	@Column(nullable = false)
 	private String sectorname;
 
-
 	@Column(nullable = false)
 	@Type(type = "text")
 	private String boardOfDirectors;
 
-
 	@Column(nullable = false)
 	@Type(type = "text")
 	private String companyBrief;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "sector_id")
+	@JsonIgnore
+	private Sector sector;
+	
+	
+	public Sector getSector() {
+		return sector;
+	}
+
+
+	public void setSector(Sector sector) {
+		this.sector = sector;
+	}
 
 
 	public Long getId() {
