@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 import com.techdemy.test.entity.*;
 
 @SpringBootApplication
@@ -16,6 +17,9 @@ public class TestApplication implements CommandLineRunner{
 	@Autowired
 	private CompanyRepository cmprep;
 	
+	@Autowired
+	StockExchangeRepository stkrep;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 	}
@@ -23,7 +27,6 @@ public class TestApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
 		
 		Sector s1 = new Sector();
 		s1.setSectorName("insurance");
@@ -58,6 +61,20 @@ public class TestApplication implements CommandLineRunner{
 		c1.setSector(s3);
 		c1.setTurnover(64000000000D);
 		cmprep.save(c1);
+		
+		StockExchange x1 = new StockExchange();
+		x1.setName("BSE");
+		x1.setBrief("Bombay Stock Exchange");
+		x1.setAddress("Dalal Street");
+		x1.setRemarks("Asia's oldest stock exchange");
+		stkrep.save(x1);
+		
+		StockExchange x2 = new StockExchange();
+		x2.setName("NSE");
+		x2.setBrief("National Stock Exchange");
+		x2.setAddress("BKC");
+		x2.setRemarks("Leading stock exchange of India");
+		stkrep.save(x2);
 	}
 
 }
