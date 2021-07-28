@@ -19,6 +19,9 @@ public class StockExchangeController {
 	@Autowired
 	StockExchangeRepository stkrep;
 	
+	@Autowired
+	StockPriceRepository sprep;
+	
 	@RequestMapping(value = "/createexchange", method = RequestMethod.POST)
 	public  ResponseEntity<Object> addstockexchange(@RequestBody StockExchange stockexchange) throws ClassNotFoundException, IOException {
 		StockExchange se= stkrep.save(stockexchange);
@@ -33,4 +36,13 @@ public class StockExchangeController {
 	public List<Object[]> getAllExchanges(){
 		return stkrep.findAllExchanges();
 	};
+	
+	@RequestMapping(value = "/stock", method = RequestMethod.POST)
+	public ResponseEntity<Object> createStock(@RequestBody StockPrice sp) {
+		sprep.save(sp);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(sp.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).build();
+	}
 }

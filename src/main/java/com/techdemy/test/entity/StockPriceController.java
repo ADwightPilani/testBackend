@@ -28,39 +28,39 @@ public class StockPriceController {
 	@Autowired
 	CompanyRepository cmprep;
 
-//	@RequestMapping(value = "/addstockprices", method = RequestMethod.POST)
-//	public ResponseEntity<Object> stockpriceapi(@RequestBody StockPrice stockprice)
-//			throws ClassNotFoundException, IOException {
-//		StockExchange ex = stkrep.findByName(stockprice.getExchangename());
-//		if(ex==null) {
-//			return ResponseEntity.badRequest().build();
-//		}
-//		stockprice.setStockexchange(ex);
-//		List<CompanyStockExchangeMap> exmap = stkcmpmaprep.findByStockexchangeAndCompanyCode(ex,
-//				stockprice.getCompanycode());
-//		System.out.println("code "+stockprice.getCompanycode()+" exchange "+stockprice.getExchangename()+" price: "+stockprice.getShareprice());
-//		if (exmap.isEmpty()) {
-//			System.out.print("problemo in stockpriceapi");
-//			return ResponseEntity.badRequest().build();
-//		}
-//		CompanyStockExchangeMap csmap = exmap.get(0);
-//		Company c = csmap.getCompany();
-//		stockprice.setCompany(c);
-//		stockprice.setCompstockmap(csmap);
-//		StockPrice stkprice = stkpricerepo.save(stockprice);
-//		List<StockPrice> prices = csmap.getStockprices();
-//		prices.add(stkprice);
-//		csmap.setStockprices(prices);
-//		stkcmpmaprep.save(csmap);
-//		// make sure your entity class properties of price are in lower case and match
-//		// the json,to avoid errors
-//		System.out.println("added stockprice for companycode: "+stkprice.getCompanycode()+" for exchange "+stkprice.getExchangename());
-//
-//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(stkprice.getId())
-//				.toUri();
-//
-//		return ResponseEntity.created(location).build();
-//	}
+	@RequestMapping(value = "/addstockprices", method = RequestMethod.POST)
+	public ResponseEntity<Object> stockpriceapi(@RequestBody StockPrice stockprice)
+			throws ClassNotFoundException, IOException {
+		StockExchange ex = stkrep.findByName(stockprice.getExchangename());
+		if(ex==null) {
+			return ResponseEntity.badRequest().build();
+		}
+		stockprice.setStockexchange(ex);
+		List<CompanyStockExchangeMap> exmap = stkcmpmaprep.findByStockexchangeAndCompanyCode(ex,
+				stockprice.getCompanycode());
+		System.out.println("code "+stockprice.getCompanycode()+" exchange "+stockprice.getExchangename()+" price: "+stockprice.getShareprice());
+		if (exmap.isEmpty()) {
+			System.out.print("problemo in stockpriceapi");
+			return ResponseEntity.badRequest().build();
+		}
+		CompanyStockExchangeMap csmap = exmap.get(0);
+		Company c = csmap.getCompany();
+		stockprice.setCompany(c);
+		stockprice.setCompstockmap(csmap);
+		StockPrice stkprice = stkpricerepo.save(stockprice);
+		List<StockPrice> prices = csmap.getStockprices();
+		prices.add(stkprice);
+		csmap.setStockprices(prices);
+		stkcmpmaprep.save(csmap);
+		// make sure your entity class properties of price are in lower case and match
+		// the json,to avoid errors
+		System.out.println("added stockprice for companycode: "+stkprice.getCompanycode()+" for exchange "+stkprice.getExchangename());
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(stkprice.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).build();
+	}
 
 	@RequestMapping(value = "/getstockprices", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<StockPrice> getstockprice() throws ClassNotFoundException, IOException {

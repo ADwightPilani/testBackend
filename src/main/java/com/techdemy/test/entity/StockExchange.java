@@ -14,28 +14,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "StockExchange")
 public class StockExchange {
-	@Id
+
 	@GeneratedValue
 	private long id;
 	
 	@Column(nullable = false)
 	private String name;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stockexchange", cascade = CascadeType.ALL, targetEntity = CompanyStockExchangeMap.class)
+	private List<CompanyStockExchangeMap> compstockmap;
 
 	@Column(nullable = false)
 	private String brief;
-	
 	@Column(nullable = false)
 	private String address;
-	
 	@Column(nullable = false)
 	private String remarks;
-
-	public long getId() {
-		return id;
+	
+	public List<CompanyStockExchangeMap> getCompstockmap() {
+		return compstockmap;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCompstockmap(List<CompanyStockExchangeMap> compstockmap) {
+		this.compstockmap = compstockmap;
+	}
+	public long getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -69,6 +73,8 @@ public class StockExchange {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	
-	
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

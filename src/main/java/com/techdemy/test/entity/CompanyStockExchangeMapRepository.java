@@ -13,4 +13,8 @@ public interface CompanyStockExchangeMapRepository extends JpaRepository<Company
 	@Query(value = "Select * from COMPANY_STOCKEXCHANGEMAP", nativeQuery = true)
     List<Object[]> findAllMaps();
 
+
+	CompanyStockExchangeMap save(CompanyStockExchangeMap cse);
+	
+	List<CompanyStockExchangeMap> findByStockexchangeAndCompanyCode(StockExchange se, String companyCode);
 }

@@ -21,12 +21,20 @@ public class CompanyStockExchangeMap {
 	private long id;
 
 	private String companyCode;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Company company;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private StockExchange stockexchange;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compstockmap", cascade = CascadeType.ALL, targetEntity = StockPrice.class)
+	private List<StockPrice> stockprices;
+
+	public CompanyStockExchangeMap() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public long getId() {
 		return id;
@@ -60,8 +68,15 @@ public class CompanyStockExchangeMap {
 		this.stockexchange = stockexchange;
 	}
 
+	public List<StockPrice> getStockprices() {
+		return stockprices;
+	}
+
+	public void setStockprices(List<StockPrice> stockprices) {
+		this.stockprices = stockprices;
+	}
+
 //	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compstockmap", cascade = CascadeType.ALL, targetEntity = StockPrice.class)
 //	private List<StockPrice> stockprices;
-	
-	
+
 }
