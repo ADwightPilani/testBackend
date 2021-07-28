@@ -20,6 +20,9 @@ public class TestApplication implements CommandLineRunner{
 	StockExchangeRepository stkrep;
 	
 	@Autowired
+	User1Repository user1rep;
+	
+	@Autowired
 	CompanyStockExchangeMapRepository stkcmpmaprep;
 	
 	public static void main(String[] args) {
@@ -83,6 +86,22 @@ public class TestApplication implements CommandLineRunner{
 		cse.setStockexchange(x2);
 		cse.setCompanyCode("TESLANSE");
 		stkcmpmaprep.save(cse);
+		
+		User1 u1 = new User1();
+		u1.setConfirmed(true);
+		u1.setEmail("user@gmail.com");
+		u1.setUsername("user");
+		u1.setPassword("$2a$10$wDFeSo8UuOAOYAjKQ4szleg3V6oIud77NdnyDBmfHy08EwJjPY5g6");
+		u1.setRole("user");
+		user1rep.save(u1);
+		
+		User1 u2 = new User1();
+		u2.setConfirmed(true);
+		u2.setEmail("admin@gmail.com");
+		u2.setUsername("admin");
+		u2.setPassword("$2a$10$6xU0VX1XVictuASj3opsjuAmKvVVjswvWZB161Bgum9RPGUf9BqOW");
+		u2.setRole("admin");
+		user1rep.save(u2);
 	}
 
 }
