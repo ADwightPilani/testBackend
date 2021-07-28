@@ -14,7 +14,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "StockExchange")
 public class StockExchange {
-
+	
+	@Id
 	@GeneratedValue
 	private long id;
 	
