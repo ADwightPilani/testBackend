@@ -11,6 +11,9 @@ import com.techdemy.test.entity.*;
 public class TestApplication implements CommandLineRunner{
 	
 	@Autowired
+	private SectorRepository secrep;
+	
+	@Autowired
 	private CompanyRepository cmprep;
 	
 	public static void main(String[] args) {
@@ -28,6 +31,30 @@ public class TestApplication implements CommandLineRunner{
 		c1.setSectorname("automobile");
 		c1.setTurnover(64000000000D);
 		cmprep.save(c1);
+		
+		Sector s1 = new Sector();
+		s1.setSectorName("insurance");
+		secrep.save(s1);
+		
+		Sector s2 = new Sector();
+		s2.setSectorName("banking");
+		secrep.save(s2);
+		
+		Sector s3 = new Sector();
+		s3.setSectorName("automobile");
+		secrep.save(s3);
+		
+		Sector s4 = new Sector();
+		s4.setSectorName("textile");
+		secrep.save(s4);
+		
+		Sector s5 = new Sector();
+		s5.setSectorName("aviation");
+		secrep.save(s5);
+		
+		Sector s6 = new Sector();
+		s6.setSectorName("petrochemical");
+		secrep.save(s6);
 	}
 
 }
