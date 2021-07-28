@@ -5,7 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 import com.techdemy.test.entity.*;
 
 @SpringBootApplication
@@ -19,6 +18,9 @@ public class TestApplication implements CommandLineRunner{
 	
 	@Autowired
 	StockExchangeRepository stkrep;
+	
+	@Autowired
+	CompanyStockExchangeMapRepository stkcmpmaprep;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
@@ -75,6 +77,12 @@ public class TestApplication implements CommandLineRunner{
 		x2.setAddress("BKC");
 		x2.setRemarks("Leading stock exchange of India");
 		stkrep.save(x2);
+		
+		CompanyStockExchangeMap cse = new CompanyStockExchangeMap();
+		cse.setCompany(c1);
+		cse.setStockexchange(x2);
+		cse.setCompanyCode("TESLANSE");
+		stkcmpmaprep.save(cse);
 	}
 
 }
