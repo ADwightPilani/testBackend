@@ -76,7 +76,7 @@ public class TestApplication implements CommandLineRunner{
 		c2.setCeo("Thierry Delaporte");
 		c2.setCompanyBrief("IT Service");
 		c2.setName("Wipro");
-		c2.setSectorname("IT");
+		c2.setSectorname("it");
 		c2.setSector(s7);
 		c2.setTurnover(64000000000D);
 		cmprep.save(c2);
@@ -85,7 +85,7 @@ public class TestApplication implements CommandLineRunner{
 		c3.setBoardOfDirectors("Nita, Anil");
 		c3.setCeo("Mukesh Ambani");
 		c3.setCompanyBrief("Petroleum");
-		c3.setName("Tesla");
+		c3.setName("Reliance");
 		c3.setSectorname("automobile");
 		c3.setSector(s6);
 		c3.setTurnover(64000000000D);
