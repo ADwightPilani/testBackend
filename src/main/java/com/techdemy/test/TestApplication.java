@@ -57,15 +57,39 @@ public class TestApplication implements CommandLineRunner{
 		s6.setSectorName("petrochemical");
 		secrep.save(s6);
 		
+		Sector s7 = new Sector();
+		s7.setSectorName("IT");
+		secrep.save(s7);
+		
 		Company c1 = new Company();
 		c1.setBoardOfDirectors("Elon, Friends");
-		c1.setCeo("Elon");
+		c1.setCeo("Elon Musk");
 		c1.setCompanyBrief("Electric Automobile");
 		c1.setName("Tesla");
 		c1.setSectorname("automobile");
 		c1.setSector(s3);
 		c1.setTurnover(64000000000D);
 		cmprep.save(c1);
+		
+		Company c2 = new Company();
+		c2.setBoardOfDirectors("Tulsi Naidu");
+		c2.setCeo("Thierry Delaporte");
+		c2.setCompanyBrief("IT Service");
+		c2.setName("Wipro");
+		c2.setSectorname("IT");
+		c2.setSector(s7);
+		c2.setTurnover(64000000000D);
+		cmprep.save(c2);
+		
+		Company c3 = new Company();
+		c3.setBoardOfDirectors("Nita, Anil");
+		c3.setCeo("Mukesh Ambani");
+		c3.setCompanyBrief("Petroleum");
+		c3.setName("Tesla");
+		c3.setSectorname("automobile");
+		c3.setSector(s6);
+		c3.setTurnover(64000000000D);
+		cmprep.save(c3);
 		
 		StockExchange x1 = new StockExchange();
 		x1.setName("BSE");
@@ -81,11 +105,29 @@ public class TestApplication implements CommandLineRunner{
 		x2.setRemarks("Leading stock exchange of India");
 		stkrep.save(x2);
 		
-		CompanyStockExchangeMap cse = new CompanyStockExchangeMap();
-		cse.setCompany(c1);
-		cse.setStockexchange(x2);
-		cse.setCompanyCode("TESLANSE");
-		stkcmpmaprep.save(cse);
+		CompanyStockExchangeMap cse1 = new CompanyStockExchangeMap();
+		cse1.setCompany(c1);
+		cse1.setStockexchange(x2);
+		cse1.setCompanyCode("TESLANSE");
+		stkcmpmaprep.save(cse1);
+		
+		CompanyStockExchangeMap cse2 = new CompanyStockExchangeMap();
+		cse2.setCompany(c2);
+		cse2.setStockexchange(x2);
+		cse2.setCompanyCode("WIPRO");
+		stkcmpmaprep.save(cse2);
+		
+		CompanyStockExchangeMap cse3 = new CompanyStockExchangeMap();
+		cse3.setCompany(c3);
+		cse3.setStockexchange(x1);
+		cse3.setCompanyCode("RELBSE");
+		stkcmpmaprep.save(cse3);
+		
+		CompanyStockExchangeMap cse4 = new CompanyStockExchangeMap();
+		cse4.setCompany(c3);
+		cse4.setStockexchange(x2);
+		cse4.setCompanyCode("RELNSE");
+		stkcmpmaprep.save(cse4);
 		
 		User1 u1 = new User1();
 		u1.setConfirmed(true);
