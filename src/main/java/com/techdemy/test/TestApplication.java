@@ -113,7 +113,7 @@ public class TestApplication implements CommandLineRunner{
 		
 		CompanyStockExchangeMap cse2 = new CompanyStockExchangeMap();
 		cse2.setCompany(c2);
-		cse2.setStockexchange(x2);
+		cse2.setStockexchange(x1);
 		cse2.setCompanyCode("WIPRO");
 		stkcmpmaprep.save(cse2);
 		
