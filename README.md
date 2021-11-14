@@ -1,8 +1,6 @@
 # testBackend
 Working of the project can be seen in Screenshots
 
-Project deplyed here(https://advaitapp.herokuapp.com/login)
-
 Use credentials (admin,admin) for admin access Use credentials (user,user) for user access
 
 new users will have user level access by default
